@@ -18,7 +18,9 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 3. Place `pitch40-addon-1.0.0.jar` from the build/libs folder into your `.minecraft/mods` folder
 4. Launch the game
 5. Select Multiplayer and click "ViaFabric" button and switch your version to 1.20.2
-6. Click the back arrow and join 2b2t as usuall
+<img width="822" height="1307" alt="Screenshot 2026-08-04 015500" src="https://github.com/user-attachments/assets/f6c2cd73-7258-4de1-9fee-209713e863f9" />
+
+7. Click the back arrow and join 2b2t as usuall
 
 ## Usage
 
