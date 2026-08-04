@@ -9,7 +9,7 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 - **Lower / Upper Bounds** – Same height control as vanilla Pitch40
 - **Rotation Speeds** – Adjust how fast pitch changes up and down
 - **Randomize Speed** – Optional slight randomization (matches original behavior)
-- **Flight Speed in F3 Menu
+- **Flight Speed** in F3 Menu
 <img width="544" height="30" alt="Screenshot 2026-08-04 031624" src="https://github.com/user-attachments/assets/4e86cd37-b316-4708-9600-a8aaeffd0e00" />
 
 - Works independently of Meteor’s built-in ElytraFly Pitch40 mode. DO NOT turn them on while using this custom mode.
