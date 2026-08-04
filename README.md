@@ -13,8 +13,8 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 
 ## Installation
 
-1. Install [Fabric+ Loader]([https://fabricmc.net/](https://modrinth.com/mod/viafabricplus/version/4.0.5-BACKPORT)) for Minecraft **1.21.4**
-2. Install [Meteor Client]([https://meteorclient.com/](https://meteorclient.com/api/download?version=1.21.4)) for 1.21.4
+1. Install [Fabric Loader](https://modrinth.com/mod/viafabricplus/version/4.0.5-BACKPORT) for Minecraft **1.21.4**
+2. Install [Meteor Client](https://meteorclient.com/api/download?version=1.21.4) for 1.21.4
 3. Place `pitch40-addon-1.0.0.jar` into your `.minecraft/mods` folder
 4. Launch the game
 
