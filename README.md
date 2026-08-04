@@ -1,4 +1,4 @@
-# Pitch40 Addon for Meteor Client (1.21.4)
+# Pitch40 Addon for Meteor Client (1.21.4) FOR 2b2t.org Minecraft server! Working 8-4-2026
 
 A Meteor Client addon that adds **CustomPitch40** — a fully configurable version of Meteor’s Pitch40 elytra flight mode.
 
@@ -17,6 +17,8 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 2. Install [Meteor Client](https://meteorclient.com/api/download?version=1.21.4) for 1.21.4
 3. Place `pitch40-addon-1.0.0.jar` from the build/libs folder into your `.minecraft/mods` folder
 4. Launch the game
+5. Select Multiplayer and click "ViaFabric" button and switch your version to 1.20.2
+6. Click the back arrow and join 2b2t as usuall
 
 ## Usage
 
