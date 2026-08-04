@@ -27,8 +27,6 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 3. Right click it to adjust settings and bind it to a key. Left clicking it in the menu enables it too so beware.
 
 **Important:** Start above the upper bounds (and ideally ≥40 blocks above the lower bounds) or disable the “Check Bounds on Activate” setting.
-<img width="521" height="733" alt="image" src="https://github.com/user-attachments/assets/5595a193-787f-41da-aa6e-d99263a98e81" />
-
 
 ## Building from Source
 
