@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 
 public class PitchAddon extends MeteorAddon {
     public static final Logger LOG = LogUtils.getLogger();
-    public static final Category CATEGORY = new Category("Pitch40");
+    public static final Category CATEGORY = new Category("Rutahns Pitch40");
 
     @Override
     public void onInitialize() {

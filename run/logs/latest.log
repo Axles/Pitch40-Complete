@@ -1,0 +1,34 @@
+[02:23:57] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.9
+[02:23:58] [main/INFO] (FabricLoader) Loading 7 mods:
+	- fabric-resource-loader-v0 3.0.11+b1caf1e904
+	- fabricloader 0.16.9
+	- java 26
+	- meteor-client 1.21.4-42
+	- minecraft 1.21.4
+	- mixinextras 0.4.1
+	- pitch40-addon 1.0.0
+[02:23:58] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/acrom/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[02:23:58] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[02:23:58] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[02:23:58] [main/ERROR] (FabricLoader) Uncaught exception in thread "main"
+java.lang.RuntimeException: Error parsing or using Mixin config pitch40-addon.mixins.json for mod pitch40-addon
+	at net.fabricmc.loader.impl.launch.FabricMixinBootstrap.init(FabricMixinBootstrap.java:96) ~[fabric-loader-0.16.9.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:151) ~[fabric-loader-0.16.9.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:68) ~[fabric-loader-0.16.9.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23) ~[fabric-loader-0.16.9.jar:?]
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) ~[?:?]
+Caused by: org.spongepowered.asm.launch.MixinInitialisationError: Error initialising mixin config pitch40-addon.mixins.json
+	at org.spongepowered.asm.mixin.transformer.Config.create(Config.java:168) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.Mixins.createConfiguration(Mixins.java:121) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.Mixins.addConfiguration(Mixins.java:108) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.Mixins.addConfiguration(Mixins.java:98) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at net.fabricmc.loader.impl.launch.FabricMixinBootstrap.init(FabricMixinBootstrap.java:94) ~[fabric-loader-0.16.9.jar:?]
+	... 4 more
+Caused by: java.lang.IllegalArgumentException: The specified resource 'pitch40-addon.mixins.json' was invalid or could not be read
+	at org.spongepowered.asm.mixin.transformer.MixinConfig.create(MixinConfig.java:1395) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.transformer.Config.create(Config.java:163) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.Mixins.createConfiguration(Mixins.java:121) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.Mixins.addConfiguration(Mixins.java:108) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at org.spongepowered.asm.mixin.Mixins.addConfiguration(Mixins.java:98) ~[sponge-mixin-0.15.4+mixin.0.8.7.jar:0.15.4+mixin.0.8.7]
+	at net.fabricmc.loader.impl.launch.FabricMixinBootstrap.init(FabricMixinBootstrap.java:94) ~[fabric-loader-0.16.9.jar:?]
+	... 4 more

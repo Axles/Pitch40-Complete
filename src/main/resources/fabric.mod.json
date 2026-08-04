@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "id": "pitch40-addon",
   "version": "${version}",
-  "name": "Pitch40 Addon",
+  "name": "Custom Pitch40",
   "description": "Allows customizing the pitch values used by Pitch40-style elytra flight.",
   "authors": [
-    "PitchAddon"
+    "Rutahn"
   ],
   "contact": {},
   "license": "MIT",
