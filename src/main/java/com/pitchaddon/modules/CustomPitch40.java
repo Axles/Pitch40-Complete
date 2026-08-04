@@ -5,8 +5,8 @@ import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.Items;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.Items;
 
 public class CustomPitch40 extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -14,7 +14,6 @@ public class CustomPitch40 extends Module {
     private final SettingGroup sgBounds = settings.createGroup("Height Bounds");
     private final SettingGroup sgRotation = settings.createGroup("Rotation Speed");
 
-    // General
     private final Setting<Boolean> requireElytra = sgGeneral.add(new BoolSetting.Builder()
         .name("require-elytra")
         .description("Only control pitch while gliding with an elytra.")
@@ -29,10 +28,9 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
-    // Pitch values (the main feature)
     private final Setting<Double> descendingPitch = sgPitch.add(new DoubleSetting.Builder()
         .name("descending-pitch")
-        .description("Target pitch while descending (vanilla Pitch40 uses ~37.72). Positive = looking down.")
+        .description("Target pitch while descending (vanilla Pitch40 uses ~32-38). Positive = looking down.")
         .defaultValue(37.72)
         .range(-90.0, 90.0)
         .sliderRange(-90.0, 90.0)
@@ -41,14 +39,13 @@ public class CustomPitch40 extends Module {
 
     private final Setting<Double> ascendingPitch = sgPitch.add(new DoubleSetting.Builder()
         .name("ascending-pitch")
-        .description("Target pitch while ascending (vanilla Pitch40 uses ~-54.77). Negative = looking up.")
+        .description("Target pitch while ascending (vanilla Pitch40 uses ~-49 to -55). Negative = looking up.")
         .defaultValue(-54.77)
         .range(-90.0, 90.0)
         .sliderRange(-90.0, 90.0)
         .build()
     );
 
-    // Height bounds
     private final Setting<Double> lowerBounds = sgBounds.add(new DoubleSetting.Builder()
         .name("lower-bounds")
         .description("Y level where the module starts pitching up. You should start at least ~40 blocks above this.")
@@ -67,7 +64,6 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
-    // Rotation speeds
     private final Setting<Double> rotateSpeedUp = sgRotation.add(new DoubleSetting.Builder()
         .name("rotate-speed-up")
         .description("Degrees per tick when pitching upwards.")
@@ -93,7 +89,6 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
-    // State
     private boolean pitchingDown = true;
     private float currentPitch;
 
@@ -126,20 +121,18 @@ public class CustomPitch40 extends Module {
 
     @Override
     public void onDeactivate() {
-        // nothing special
     }
 
     @EventHandler
     private void onTick(TickEvent.Pre event) {
-        if (mc.player == null || mc.level == null) return;
+        if (mc.player == null || mc.world == null) return;
 
         if (requireElytra.get()) {
-            boolean gliding = mc.player.isFallFlying();
-            boolean hasElytra = mc.player.getItemBySlot(EquipmentSlot.CHEST).is(Items.ELYTRA);
+            boolean gliding = mc.player.isGliding();
+            boolean hasElytra = mc.player.getEquippedStack(EquipmentSlot.CHEST).isOf(Items.ELYTRA);
             if (!gliding || !hasElytra) return;
         }
 
-        // Switch direction based on height bounds
         if (pitchingDown && mc.player.getY() <= lowerBounds.get()) {
             pitchingDown = false;
         } else if (!pitchingDown && mc.player.getY() >= upperBounds.get()) {
@@ -150,7 +143,6 @@ public class CustomPitch40 extends Module {
         float targetAsc = ascendingPitch.get().floatValue();
 
         if (!pitchingDown) {
-            // Pitching up (towards ascendingPitch, which is more negative)
             float step = rotateSpeedUp.get().floatValue();
             if (randomize.get()) {
                 step = randPitch(step, 1.0f);
@@ -162,7 +154,6 @@ public class CustomPitch40 extends Module {
                 pitchingDown = true;
             }
         } else {
-            // Pitching down (towards descendingPitch)
             if (currentPitch < targetDesc) {
                 float step = rotateSpeedDown.get().floatValue();
                 if (randomize.get()) {
@@ -177,14 +168,10 @@ public class CustomPitch40 extends Module {
             }
         }
 
-        // Clamp for safety
         currentPitch = Math.max(-90f, Math.min(90f, currentPitch));
-        mc.player.setXRot(currentPitch);
+        mc.player.setPitch(currentPitch);
     }
 
-    /**
-     * Create a random pitch offset around the given value (same approach as vanilla Pitch40).
-     */
     private float randPitch(float value, float bound) {
         return (float) (value + (bound * (Math.random() - 0.5)));
     }
