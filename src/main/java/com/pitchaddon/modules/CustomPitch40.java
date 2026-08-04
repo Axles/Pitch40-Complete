@@ -7,6 +7,7 @@ import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Items;
+import net.minecraft.util.math.Vec3d;
 
 public class CustomPitch40 extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -14,6 +15,7 @@ public class CustomPitch40 extends Module {
     private final SettingGroup sgBounds = settings.createGroup("Height Bounds");
     private final SettingGroup sgRotation = settings.createGroup("Rotation Speed");
 
+    // General
     private final Setting<Boolean> requireElytra = sgGeneral.add(new BoolSetting.Builder()
         .name("require-elytra")
         .description("Only control pitch while gliding with an elytra.")
@@ -28,6 +30,21 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
+    public final Setting<Boolean> showSpeedInF3 = sgGeneral.add(new BoolSetting.Builder()
+        .name("show-speed-in-f3")
+        .description("Show your speed (b/s) in the vanilla F3 debug screen while this module is active.")
+        .defaultValue(true)
+        .build()
+    );
+
+    private final Setting<Boolean> noUnloadedChunks = sgGeneral.add(new BoolSetting.Builder()
+        .name("no-unloaded-chunks")
+        .description("Stops horizontal movement when the next chunk ahead is not loaded (same as Meteor Pitch40).")
+        .defaultValue(true)
+        .build()
+    );
+
+    // Pitch values
     private final Setting<Double> descendingPitch = sgPitch.add(new DoubleSetting.Builder()
         .name("descending-pitch")
         .description("Target pitch while descending (vanilla Pitch40 uses ~32-38). Positive = looking down.")
@@ -46,6 +63,7 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
+    // Height bounds
     private final Setting<Double> lowerBounds = sgBounds.add(new DoubleSetting.Builder()
         .name("lower-bounds")
         .description("Y level where the module starts pitching up. You should start at least ~40 blocks above this.")
@@ -64,6 +82,7 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
+    // Rotation speeds
     private final Setting<Double> rotateSpeedUp = sgRotation.add(new DoubleSetting.Builder()
         .name("rotate-speed-up")
         .description("Degrees per tick when pitching upwards.")
@@ -89,11 +108,12 @@ public class CustomPitch40 extends Module {
         .build()
     );
 
+    // State
     private boolean pitchingDown = true;
     private float currentPitch;
 
     public CustomPitch40() {
-        super(PitchAddon.CATEGORY, "custom-pitch40", "Pitch40-style elytra flight with fully configurable pitch angles.");
+        super(PitchAddon.CATEGORY, "ruts-pitch-40", "Rut's Pitch 40 - configurable Pitch40-style elytra flight.");
     }
 
     @Override
@@ -133,6 +153,19 @@ public class CustomPitch40 extends Module {
             if (!gliding || !hasElytra) return;
         }
 
+        // --- No unloaded chunks (same idea as Meteor Pitch40) ---
+        if (noUnloadedChunks.get()) {
+            Vec3d vel = mc.player.getVelocity();
+            int chunkX = (int) Math.floor((mc.player.getX() + vel.x) / 16.0);
+            int chunkZ = (int) Math.floor((mc.player.getZ() + vel.z) / 16.0);
+
+            if (!mc.world.getChunkManager().isChunkLoaded(chunkX, chunkZ)) {
+                // Zero horizontal movement, keep vertical so height control still works
+                mc.player.setVelocity(0, vel.y, 0);
+            }
+        }
+
+        // --- Pitch control ---
         if (pitchingDown && mc.player.getY() <= lowerBounds.get()) {
             pitchingDown = false;
         } else if (!pitchingDown && mc.player.getY() >= upperBounds.get()) {
