@@ -26,6 +26,8 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 2. Search **Ruts Pitch40**
 3. Right click it to adjust settings and bind it to a key. Left clicking it in the menu enables it too so beware.
 
+<img width="522" height="734" alt="Screenshot 2026-08-04 042325" src="https://github.com/user-attachments/assets/bc18390c-c6e5-46a6-9fab-f89450f527bf" />
+
 **Important:** Start above the upper bounds (and ideally ≥40 blocks above the lower bounds) or disable the “Check Bounds on Activate” setting.
 
 ## Building from Source
