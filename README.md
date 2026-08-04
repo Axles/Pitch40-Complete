@@ -23,9 +23,9 @@ A Meteor Client addon that adds **CustomPitch40** — a fully configurable versi
 ## Usage
 
 1. Open Meteor GUI (Right Shift by default)
-2. Go to the **Pitch40** category
-3. Enable **Custom Pitch40**
-4. Adjust the pitch values, bounds, and speeds to your liking
+2. Search **Custom Pitch40**
+3. Adjust the pitch values, bounds, and speeds to your liking
+4. Bind to a key and enjoy!
 
 **Important:** Start above the upper bounds (and ideally ≥40 blocks above the lower bounds) or disable the “Check Bounds on Activate” setting.
 
