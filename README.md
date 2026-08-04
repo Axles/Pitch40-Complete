@@ -1,5 +1,6 @@
-# Pitch40 Addon for Meteor Client (1.21.4) FOR 2b2t.org 
-Minecraft server! Working 8-4-2026 
+## Pitch40 Addon for Meteor Client (1.21.4) 
+FOR 2b2t.org Minecraft server! 
+Working 8-4-2026 
 
 A Meteor Client addon that adds **CustomPitch40** — a fully configurable version of Meteor’s Pitch40 elytra flight mode.
 
