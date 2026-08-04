@@ -113,7 +113,7 @@ public class CustomPitch40 extends Module {
     private float currentPitch;
 
     public CustomPitch40() {
-        super(PitchAddon.CATEGORY, "ruts-pitch-40", "Rut's Pitch 40 - configurable Pitch40-style elytra flight.");
+        super(PitchAddon.CATEGORY, "Rutahn", "Rut's Pitch 40 - configurable Pitch40-style elytra flight.");
     }
 
     @Override
@@ -135,7 +135,7 @@ public class CustomPitch40 extends Module {
 
         pitchingDown = true;
         currentPitch = descendingPitch.get().floatValue();
-        info("CustomPitch40 enabled. Descending pitch: %.2f | Ascending pitch: %.2f",
+        info("Rut Roh's Engaged. Descending pitch: %.2f | Ascending pitch: %.2f",
             descendingPitch.get(), ascendingPitch.get());
     }
 

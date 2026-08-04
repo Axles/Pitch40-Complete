@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "com/pitchaddon/mixin/DebugHudMixin": {
+      "getLeftText": "Lnet/minecraft/class_340;method_1835()Ljava/util/List;"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/pitchaddon/mixin/DebugHudMixin": {
+        "getLeftText": "Lnet/minecraft/class_340;method_1835()Ljava/util/List;"
+      }
+    }
+  }
+}

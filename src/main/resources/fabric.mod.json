@@ -16,7 +16,9 @@
       "com.pitchaddon.PitchAddon"
     ]
   },
-  "mixins": [],
+ "mixins": [
+  "pitch40-addon.mixins.json"
+],
   "depends": {
     "java": ">=21",
     "minecraft": ["~1.21.4"],
